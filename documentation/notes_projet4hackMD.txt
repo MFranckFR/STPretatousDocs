@@ -1,0 +1,729 @@
+# Projet PreTaTouS
+
+Sites models:
+- [Geeve](https://www.geev.com/fr)
+
+
+Choix technique:
+- FE: angular / materialUI / bootstrap /
+- BE: express /
+- SBD: mongo  /
+- Deploiement : heroku
+
+Livrables
+- power-point
+- fonctionnalités principales
+- planning / répartition du travail (trello)
+- release date/tag sur github - en relation avec le planning
+- readme.md
+    - plusieurs sections
+- démo l'application
+- durée: 15 min
+
+Pour mercredi 17/02/2021
+- maquette de navigation (wireframes)
+- planning / répartition des taches
+
+
+
+---
+# Roles
+
+- visiteur
+- membre:
+    - prêteur 
+    - emprunteur 
+    - donateur
+    - donataire
+- administrateur:
+    - gestionnaire
+    - mainteneur
+---
+# EPICS
+
+## En tant qu'emprunter
+- Je veux créér ma demande de réservation
+    - afin d'avoir l'excusivité de l'accès au produit durant la période spécifiée.
+- Je veux consulter mes Demandes de Réservation (=panier)
+    - afin de savoir si me produit m'est réservé durant la période spécifiée.
+- Je veux consulter mes Reservations
+    - afin de m'organiser pour aller retirer les produits chez leur propriétaires
+- Je veux consulter mes Emprunts
+    - afin d'identifier les produits que l'on m'a prêté et à quelle personne.
+- Je veux visualiser mes Retours
+    - afin de savoir les produits que j'ai emprunté, à qui, et quand.
+
+## En tant que prêteur
+- Je veux créer une fiche de prêt
+    - afin de rendre visible mon prêt
+- Je veux pouvoir modifier/supprimer une fiche de prêt
+    - afin de corriger une fiche, ne plus prếter un produit, supprimer une fiche (erreur)
+- Je veux consulter ma liste de prêts
+    - afin de suivre l'évolution de mes prêts
+- Je veux pouvoir valider une demande de prêt
+    - afin de contrôler la disponibilité de mon prêt.
+- Je veux être alerter d'un prochain rendez-vous pour un prêt.
+    - afin de me préparer et m'assurer que le produit est prêt.
+- Je veux être alerter de la fin d'un prêt
+    - afin m'assurer que retrouver mon prêt.
+- Je veux avoir la garantie de l'identité de la personne à qui je prête
+    - afin de ne pas être volé et ainsi retrouver mon produit
+- Je veux pouvoir garantir le retour de mon produit dans le même état
+    - afin de pouvoir m'en servir ou le prêter de nouveau.
+
+## En tant que membre
+- Je peux créer un compte de membre
+    - afin d'avoir accès à l'application.
+- Je veux pouvoir modifier/renouveller mon mot de passe
+    - afin de m'authentifier
+- Je veux avoir la garantie que mes informations ne sont pas utilisées par des tiers et son sécurisées
+    - afin de garantir la confidentialité de mes données.
+- Je veux pouvoir modifier mes informations personnelles
+    - afin de contrôler mes informations personnelles.
+- Je veux pouvoir cloturer mon compte
+    - afin de rendre inaccessible mon compte.
+- Je veux pouvoir contacter le support de l'application
+    - afin de m'aider à résoudre des problèmes liées à l'application.
+- Je veux pouvoir prếter ou emprunter
+    - afin partager les produits en commun.
+
+## En tant que visiteur
+- Je veux pouvoir consulter quelques produits en prêt.
+    - afin de savoir les services rendus par l'application.
+
+
+---
+
+# Détails des épics / Stories
+
+# Je veux emprunter un produit
+
+## Je créée ma demande de réservation
+- date début / date de fin.
+- commentaire pour le prêteur
+- Je valide.
+
+## Je veux consulter mes Demandes de Réservation (=panier)
+- Je vois pour chaque ligne de demande:
+    - une photo
+    - un titre
+    - la période de réservation
+    - #id prêteur (email/surnom/id)
+    - email/téléphone prêteur
+- je peux supprimer une demande (+confirmation)
+- Je peux modifier une demande
+- je peux **confirmer** mes demandes (+confirmation). Alors mes demandes sont regroupées en MesReservations.
+
+## Je veux consulter mes Reservations
+- je vois sur une ligne chaque demande de réservation : 
+    - titre
+    - #id prêteur (email/surnom/id)
+    - statut demande: attente/ajournée/ok/rejetée
+    - les messages.
+- je peux annuler une demande
+
+## Je veux consulter mes Emprunts
+- je vois sur une ligne chaque emprunt:
+    - titre
+    - #id prêteur (email/surnom/id)
+    - etat lors de l'emprunt
+    - la date d'emprunt
+    - la date de retour (max prévu)
+    - les messages.
+
+## Je veux visualiser mes Retours
+- Je vois sur chaque ligne, chaque retour:
+    - titre
+    - #id prêteur (email/surnom/id)
+    - etat produit au retour
+    - la date d'emprunt
+    - la date de retour effectif
+    - les messages
+
+
+# Côté prêteur
+
+## Je veux créer une fiche de prêt
+
+- je clique sur "je préte"
+- je remplis la **fiche de prêt**.
+- je valide => message m'indique
+    - que ma fiche est bien enregistrée
+    - qu'une "demande de validation est en cours de traitement. Vous receverez un email confirmant la publication de votre annonce."
+    - J'ai un email m'indiquant si ma fiche est publiée ou refusée. 
+- @see:
+    - nombre max de photo 
+    - dimension/poids max
+- @next: liste des fiches de prêts
+
+## Je veux pouvoir modifier/supprimer une fiche de prêt
+
+
+## Je veux consulter ma liste de prêts
+
+- Je clique sur "voir mes produits"
+- J'ai une **liste de mes prets**.
+- Je peux voir les indications les plus pertinantes sur mes prets.
+    - photo, designation
+    - demande de réservation ?
+    - des produits réservés ? Sur quelle période ?
+    - des produits empruntés ? Par qui ? Depuis quand ? Jusqu'à quand ?
+- Je veux pouvoir cliquer sur un produit que je veux modifier
+- Je veux pouvoir cliquer sur un produit que je veux suspendre des prêts.
+- Je veux avoir une alerte si mes prets ne sont pas retournés (j-1 ?).
+
+
+## Je veux pouvoir valider une demande de prêt
+## Je veux être alerter d'un prochain rendez-vous pour un prêt.
+## Je veux être alerter de la fin d'un prêt
+## Je veux avoir la garantie de l'identité de la personne à qui je prête
+## Je veux pouvoir garantir le retour de mon produit dans le même état
+ 
+```plantuml
+@startuml
+
+Emprunteur:prenom
+Emprunteur:nom
+Emprunteur:email
+Emprunteur-->DemandeReservation
+
+Preteur:surnom
+Preteur:prenom
+Preteur:nom
+Preteur:email
+Preteur-->FicheProduit
+
+FicheProduit:titre
+FicheProduit:description
+FicheProduit:etat
+FicheProduit:disponible (o/n)
+FicheProduit --> DemandeReservation
+
+
+
+[*] --> DemandeReservation
+DemandeReservation: dateResaDebut
+DemandeReservation: dateResaFin
+DemandeReservation: dateDebut
+DemandeReservation: dateFin
+DemandeReservation: validation (attente, ajourné, ok, nok)
+DemandeReservation-->Reservation
+DemandeReservation-->[*]
+
+Reservation: date debut
+Reservation: date fin
+Reservation: validé (o/n)
+Reservation --> Pret
+Reservation -->[*]
+
+Pret: date debut
+Pret: date fin
+Pret: etat produit
+Pret --> Retour
+Pret -->[*]
+
+
+Retour:
+Retour: Date
+Retour: etat produit
+Retour -->[*]
+
+
+
+@enduml
+
+```
+
+Transaction
+```plantuml
+@startuml
+start
+
+if (resaOK) then (yes)
+  :Pret else ();
+else (nothing)
+  :stop;
+endif
+stop
+@enduml
+```
+
+# la gestion du compte
+
+## Je veux m'inscrire (création de compte)
+- je clique sur "Inscription"
+- je renseigne mes **informations personnelles**.
+- J'ai une confirmation sur mes données : recapitulatif + validation de l'inscription.
+- Je reçois un email me demandant de confirmer mon email via un lien.
+- Je recois un email de confirmation de mon inscription, ainsi qu'un rappel de la procédure pour me désinscrire du site.
+
+## Je veux voir/modifier mon compte
+- je clique sur "Mon compte"
+- une page contient mes informations personnelles et mes login/mot de passe. Je peux les modifier puis valider
+- Je reviens sur la même pas d'édition avec une indication comme quoi mes modifications ont bien été prises en compte.
+
+
+
+
+
+# Spécifications
+
+
+## Membre (utilisateur identifier)
+- id
+- email
+- etc
+
+## Fiche produit
+- membre:1 - *:fiche produit
+- autres propriétés
+- disponible à la réservation
+
+## DemandeReservation
+- 1:fiche produit
+- emprunteur:1 - 1:preteur
+- dateReservation_debut
+- dateReservation_fin
+- date_debut: now()
+- date_fin: tomorrow
+- validation: en attente/ok/nok 
+- validParQui: demandeur/preteur
+- commentaire
+
+## Réservation
+- 1:fiche produit
+- emprunteur:1 - 1:preteur
+- date debut  = dateReservation_debut
+- date de fin = dateReservation_fin
+- validé: oui/non par preteur/emprenteur
+- commentaire
+
+## Prêt
+- 1:Réservation
+- date de début = now()
+- date de fin = dateReservation_fin
+- etat produit début du pret
+- commentaire:''
+- signature
+
+## Retour
+- 1:pret
+- date de retour
+- rendu: oui/non
+- etat_pour_emprunteur:neuf/bon/moyen/cassé/perdu/volé
+- etat_pour_preteur: neuf/bon/moyen/cassé/perdu/volé
+- commentaire:"L'emprunteur a remboursé le prêteur"
+- signature
+- 
+
+
+## Informations personnelles
+- Mon compte:
+    - email
+    - surnom
+- prenom
+- nom
+- adresse
+    - n° rue
+    - rue
+    - code postal
+    - ville
+    - pays
+- télephone mobile
+- télephone fixe
+- une photo à charger
+    
+# Annexes
+
+## Epics
+
+### Brouillon des épics
+
+En tant que **visiteur**, je souhaiterai
+- trouver les outils dont j'ai besoin, à proximité
+- trouver s'il y a des dons à proximité
+
+En tant que **membre** de l'application, je souhaiterai:
+- modifier mes informations personnelles.
+- renouveller mon mot de passe.
+@see: procédure RGPD
+
+En tant qu'**emprunteur**, je recherche des outils pour des travaux ponctuels. Je souhaiterai:
+- trouver les outils dont j'ai besoin, à proximité
+- **réserver** un outil sur une période.
+- contacter le prêteur pour établir un rendez-vous.
+- lister les produits que j'ai empruntés et à qui.
+- donner mon feedback sur l'outil et le préteur.
+- connaitre le nombre d'emprunts effectués par le prêteur et/ou l'objet prété.
+
+
+En tant que **prêteur**, j'ai des outils à la maison que je désire partager. Je souhaiterai: 
+- faire savoir que je prête mes outils.
+- être sûr de recupérer mes outils en l'état.
+- confirmer/refuser une réservation.
+- être contacter par l'emprunteur.
+- lister les outils que j'ai prêtés et sur quelle période.
+- donner mon feedback sur l'emprunteur
+- connaitre le nombre d'emprunt effectué par l'emprunteur.
+
+
+En tant que **gestionnaire**, j'ai besoin de 
+- gérer les membres (création/update/suspension).
+    - afin de contrôler les accès des membres.
+- valider la création d'un compte.
+    - afin de contrôler la pertinance des comptes.
+- valider les fiches produits/versions avant publication.
+    - afin de garantir une utilisation appropriée de l'application et éviter le détournement de celle-ci 
+- visualiser les fiches produits (prêts et dons).
+    - afin de contrôler le texte publié.
+- gérer les reservations et les emprunts.
+    - afin de résoudre des problèmes de mauvaises utilisations ou dysfonctionnement résolvablent au niveau des données de l'application.
+
+
+En tant que **mainteneur**, j'ai besoin de 
+- gérer les membres (création/update/suspension).
+- valider la création d'un compte.
+- Gestion des comptes (email/password)
+- gérer les fiches produits (prêts et dons).
+- valider les fiches produits/versions avant publication.
+- gérer les reservations et emprunts.
+- surveiller l'état de l'application.
+- suspendre/activer l'application.
+- logger les visites.
+- logger des transactions (réservations, emprunts, demandes de contact)
+- sauvegarder l'état de l'application (backup, restoration)
+
+En tant que **donateur**, j'ai des consommables de travaux à donner (lames parquets, pots de peintures, tuiles, ....). Je souhaiterai:
+- faire savoir que j'ai des objets à donner
+- confirmer/refuser un réservation sur un don.
+- être contacter par le donataire.
+- donner mon feedback sur le donataire.
+- connaitre le nombre de dons reçus par  le donataire.
+
+En tant que **donataire**:
+je souhaitera pouvoir
+- connaitre les dons faits à proximité
+- réserver un don
+- contacter le donateur
+- donner mon feedback sur le donateur
+- 
+
+### Je veux créer une fiche de don
+- je clique sur "Je donne"
+- je complète la **fiche de don**.
+- je valide
+- Une demande de validation est en cours.
+- J'ai un email m'indiquant si ma fiche est publiée ou refusée.
+- @see: 
+    - nombre max de photo 
+    - dimension/poids max
+
+### Je veux voir mes fiches de don
+- Je clique sur "voir mes dons"
+- J'ai une **liste de mes dons**.
+- Je peux voir les indications les plus pertinantes sur mes dons (donné ou non, à qui ? quand ?)
+
+
+### Je selectionne un produit
+- je clique sur "Je réserve" à coté de deux dates (début = now() / fin=now() +1)
+- J'arrive sur la page de réservation.
+
+
+## Liste de mes prêts
+
+- une photo
+- un titre / designation
+- emprunté actuellement ? oui / non
+- réservé actuellement ? oui / non
+- [si prété] 
+    - surnom de l'emprunteur
+    - lieu d'emprunt.
+    - date début emprunt et date du retour.
+- réservation ? 
+- [si réservé] 
+    - surnom de la personne qui réserve
+    - date de la réservation
+
+
+## Fiche de pret creation/editable
+- un titre = Une designation du produit
+- une description du produit
+- des photos à ajouter
+- rendre disponible au prêt OUI/NON
+- une période du prêt ? (date debut / fin)
+- état du produit (neuf, bon, moyen)
+- une photo
+
+Reservation/Emprunt
+- emprunté actuellement ? oui / non
+- réservé actuellement ? oui / non
+
+## Fiche de pret visualisation
+- un titre = Une designation du produit
+- une description du produit
+- des photos à ajouter
+- disponible au prêt OUI/NON
+- calendrier: les périodes du prêt ? (dates debut / fin)*
+- état du produit (neuf, bon, moyen)
+- une photo
+
+Reservation/Emprunt
+- emprunté actuellement ? oui / non
+- réservé actuellement ? oui / non
+
+## Réservation & Emprunt
+- empruntable : oui / non
+- reservable & période : oui / non
+- emprunté & période   : oui / non
+@note: modélisation:
+- transac : ( emprunté || reservé ) sur une période
+
+
+---
+
+# Réunion 2 (lundi 9/02/21)
+
+navigation
+- [x] connecté 
+- [ ] deconnecté
+- navbar
+    - logo
+    - [ ] champ de recherche full text
+    - [ ] inscription
+    - [x] gestion du compte
+    - [x] mes produits
+    - [ ] accueil
+- footer
+    - date - copyright/copyleft
+    - condition d'utilisation
+    - contactez nous
+    - liens reseaux sociaux
+- page d'accueil:
+    - carousel de produits clicables
+    - je prete en gros
+    - 
+- page de connexion
+- page création du compte
+    - email
+    - password hashé
+    - date creation
+    - date maj
+- page compte utilisateur
+    - nom
+    - prénom
+    - surnom
+    - adresse:rue/cp/ville
+    - coordonnée geoc
+    - email
+    - telephone
+    - date creation
+    - date maj
+- page création du produit
+- page de consultation de mes produits (ajout/supress)
+- page consultation/d'édition/suppression du produit
+    - designation
+    - descriptiion
+    - etat: 
+        - état: emprunté, disponible, réservé, désactivé
+        - date début, date de fin
+        - à qui - où ?
+    - réservation: 
+        - état: en attente, validé, accepté, refusé
+        - date debut, date de fin
+    - photo
+    - date creation
+    - date maj
+    - etat du produi [enum]
+    - nombre d'emprunt
+    - recommandation du produit : nombre + note/5
+    - commenter un objet (n...n)
+    - date dernier emprunt
+    - envoyer un message au proprio du produit / Historiser les messages !
+- page recherche / résultats
+    - recherche full text
+    - recheche multi-criteres
+    - recherche associée?
+- page mes réservations
+    - une reservation : date_debut, date_fin
+    - alerte de disponbilité d'un produit (email, sms..)
+    - je réserve un produit
+    - les réservations sur mon produit
+    - les réservations de mes produits
+- page de notations
+    - emprunteur : je note le produit et la transaction
+    - preteur: je note l'état retour du produit et transaction.
+    - valider la transaction du produit entre preteur/emprunteur
+    - connexion/deco / inscription
+    - gestion du compte : mdp perdu / maj compte / suppression compte
+        - fiche utilisateur
+    - accueil: deja des réponses..
+        - des outils autour de moi ou autour de ma ville
+    - fiche objet : READ-ONLY 
+        - designation
+        - photo
+        - etat
+        - disponibilité : status (dispo/indisp) - période:[dt_debut, dt_fin]
+        - lieu géographique / map
+        - je peux réserver
+        - telephone / email / push
+
+        - produits associés: X1, X2, ....
+        - produits similaires / recherches similaires
+    -fiche objet : EDIT/CREATE
+        - @dessus
+    Page d'accueil
+
+
+---
+
+
+## Quelques outils
+
+- [Markdown: les bases](https://www.markdownguide.org/basic-syntax/)
+
+Outils Wireframes:
+    - [ici mếme avec plantUML/salt](https://plantuml.com/fr/archimate-diagram) !
+    - [Pencil 2D](https://pencil.evolus.vn/Downloads.html) (licence libre, M$,MacOS, GNU/Linux) 
+    - https://fr.followband.com/item/739/
+    - https://github.com/bradtraversy/design-resources-for-developers/blob/master/readme.md
+    - https://www.invisionapp.com/studio
+    
+
+Génial ! On peut faire des schémas juste evec du code avec [PlantUML](https://plantuml.com/fr/)
+
+```plantuml
+@startuml
+
+start
+
+if (Connecté) then (yes)
+  :process all\ndiagrams;
+else (no)
+  :process only
+  __sequence__ and __activity__ diagrams;
+endif
+
+stop
+
+@enduml
+```
+
+```plantuml
+@startsalt
+{+
+{* File | Edit | Source | Refactor
+ Refactor | New | Open File | - | Close | Close All }
+{/ General | Fullscreen | Behavior | Saving }
+{
+{ Open image in: | ^Smart Mode^ }
+[X] Smooth images when zoomed
+[X] Confirm image deletion
+[ ] Show hidden images
+}
+[Close]
+}
+@endsalt!
+
+```
+```plantuml
+@startsalt
+{
+  Login    | "MyName   "
+  Password | "****     "
+  [Cancel] | [  OK   ]
+}
+@endsalt
+```
+
+```plantuml
+@startuml
+start
+if (condition A) then (yes): Text 1;
+else (nothing)
+stop
+@enduml
+```
+
+### Exemple d'historgramme
+```vega
+{
+  "data": {
+    "values": [
+      {"a": "C", "b": 2}, {"a": "C", "b": 7}, {"a": "C", "b": 4},
+      {"a": "D", "b": 1}, {"a": "D", "b": 2}, {"a": "D", "b": 6},
+      {"a": "E", "b": 8}, {"a": "E", "b": 4}, {"a": "E", "b": 7}
+    ]
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "a", "type": "nominal"},
+    "y": {"aggregate": "average", "field": "b", "type": "quantitative"}
+  }
+}
+
+```
+---
+# Projet bibliothèque
+
+~~vendredi 5 février~~ vendredi 12 février 2021 : Faire maquette fil de fer. 
+
+Discussion: **Système de prêts d’outils**
+prêt d’outils
+dons: consommable entamé : peinture, clou
+Service : mode d’emploi ?
+
+**Exemples**:
+- tournevis
+- perceuse : sans file, fil,perforateur
+- lames de parquets, reste de peinture (consommable)
+
+**Transaction**:
+- Quoi ? outil (marque, model, année…?)
+- Le propriétaire ?
+- durée du prêt : début / fin - raccourcir le prêt possible ?
+- Etat de l’outil: au début du prêt - A la fin du prêt
+- système de notation de l’emprunteur / de l’emprunté ?
+- mode emploi → formation à l’utilisation de l’outil ? (informel ?)
+
+
+**Outils**
+-    item outil -- outil (marque, model, année…?)
+
+**point délicat**:
+La confiance:
+- garantie de l’identification de la personne.
+- état de la machine : fond de garantie : assurance casse - remplacement ou alors dans un système de confiance garantie:
+- etat de l’appareil : signature de l’état de la machine
+- système de notation
+- identification des membres du réseau
+- garantir la réalité de la transaction et de sa qualité lors de l’échange.
+
+**La transaction d’échange des outils**
+
+
+## Application du même genre
+https://www.geev.com/
+https://proxiigen.com/ 
+Plus sur des services:
+nextdoor
+location : [kiloutou](https://www.kiloutou.fr/)
+
+
+## Schémas bibliothèque
+
+- [The Expressive Power of UML-based Web Engineering ](https://www.researchgate.net/publication/2526939_The_Expressive_Power_of_UML-based_Web_Engineering)(2002)
+- [Question: Define A Use Case Model For LMS Using Case Diagram Notation. Briefly Describe Each Use Case. Include All Listed](https://www.chegg.com/homework-help/questions-and-answers/define-use-case-model-lms-using-case-diagram-notation-briefly-describe-use-case-include-li-q56220268)
+- [Library Domain Model](https://www.uml-diagrams.org/library-domain-uml-class-diagram-example.html) (uml-diagrams.org)
+- [Class Diagram for Library Management System](https://www.geeksforgeeks.org/class-diagram-for-library-management-system/?ref=rp )(geeksforgeeks, avril 2020)
+- [Use Case Diagram and Class Diagram of Library Management Information System](https://www.programmersought.com/article/99444562171/)
+- [Exemple d’une bibliotheque](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose) (mongodb/mongoose, mozilla Fondation)
+
+
+## SGBD
+- [Sqlite vs MySQL vs postGreSQL](https://blog.ssdnodes.com/blog/sqlite-vs-mysql-vs-postgresql/) (avril 2020) 
+- [MySQL full outer join](https://fthiella.github.io/mysql-full-outer-join/)
+- https://stackoverflow.com/questions/5673585/can-i-use-nosql-instead-of-a-relational-database 
+- https://github.com/lzhongzhang/Online-Library-System 
+
+
+~~~~
