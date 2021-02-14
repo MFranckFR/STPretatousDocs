@@ -1,16 +1,67 @@
 # Projet PreTaTouS
 
-Sites models:
-- [Geeve](https://www.geev.com/fr)
+
+## Todo list
+
+Notes:
+- pas de réservation future
+
+Backend
+
+-- format output : texte , json
+
+1 - [console] Creation/édition de fiche produit
+
+2 - [console] Visualiser la fiche produit
+
+3 - [console] Lister les fiches produits
+
+4 - [console] Reserver le produit maintenant pour X jours 
+
+5 - [console] Lister les produits réserver avec les jours de réservation.
+
+6 - [console] Retour du produit
+
+7 - [back] Mise en place du serveur web (express) avec des routes pour chaque service
+
+8- [back] API web d'accès aux opérations de 1 à 6
+- création fiche produit (post)
+- visualisation fiche produit (get)
+- Edition de fiche produit (post)
+- Suppression de fiche produit (get)
+- lister les fiches produits
+- Lister les fiches produit réservées
 
 
-Choix technique:
+Ici on peut interfacer avec le front
+
+- [Interface] creation d'une fiche produit
+- [Interface] visualisation d'une fiche produit
+- [Interface] création fiche produit (post)
+- [Interface] visualisation fiche produit (get)
+- [Interface] Edition de fiche produit (post)
+- [Interface] Suppression de fiche produit (get)
+- [Interface] Lister les fiches produits
+- [Interface] Un bouton "réserver" sur chaque ligne.
+- [Interface] Lister les fiches produit réservées.
+- [Interface] bouton "retour du produit" sur chaque ligne.
+
+Des tests
+- Revoir les fonctionnalités de base de jest.
+- tests fonctionnels sur curd fiche produit et réserver un produit et retour d'un produit.
+- tests unitaires : sélectionner les tests pertinents.
+- 
+
+
+
+
+## Choix technique:
 - FE: angular / materialUI / bootstrap /
 - BE: express /
 - SBD: mongo  /
 - Deploiement : heroku
 
-Livrables
+## Livrables
 - power-point
 - fonctionnalités principales
 - planning / répartition du travail (trello)
@@ -30,7 +81,7 @@ Pour mercredi 17/02/2021
 # Roles
 
 - visiteur
-- membre:
+- membre (=connecté):
     - prêteur 
     - emprunteur 
     - donateur
@@ -41,11 +92,11 @@ Pour mercredi 17/02/2021
 ---
 # EPICS
 
-## En tant qu'emprunter
+## En tant qu'emprunteur
 - Je veux créér ma demande de réservation
     - afin d'avoir l'excusivité de l'accès au produit durant la période spécifiée.
 - Je veux consulter mes Demandes de Réservation (=panier)
-    - afin de savoir si me produit m'est réservé durant la période spécifiée.
+    - afin de savoir si le produit m'est réservé durant la période spécifiée.
 - Je veux consulter mes Reservations
     - afin de m'organiser pour aller retirer les produits chez leur propriétaires
 - Je veux consulter mes Emprunts
@@ -76,7 +127,7 @@ Pour mercredi 17/02/2021
     - afin d'avoir accès à l'application.
 - Je veux pouvoir modifier/renouveller mon mot de passe
     - afin de m'authentifier
-- Je veux avoir la garantie que mes informations ne sont pas utilisées par des tiers et son sécurisées
+- Je veux avoir la garantie que mes informations ne sont pas utilisées par des tiers et sont sécurisées
     - afin de garantir la confidentialité de mes données.
 - Je veux pouvoir modifier mes informations personnelles
     - afin de contrôler mes informations personnelles.
@@ -97,6 +148,14 @@ Pour mercredi 17/02/2021
 # Détails des épics / Stories
 
 # Je veux emprunter un produit
+
+## Je rechercher des produits
+- Boite de recherche
+    - champ de rechercher full text
+    - choix catégories de produits
+    - choix d'une zone géographique
+    - 
+
 
 ## Je créée ma demande de réservation
 - date début / date de fin.
@@ -334,6 +393,25 @@ stop
 - une photo à charger
     
 # Annexes
+
+## Ressources
+
+### Sites models:
+- [Geeve](https://www.geev.com/fr)
+
+
+### Modules Angular:
+
+User Registration and Login Example:
+- https://jasonwatmore.com/post/2020/04/28/angular-9-user-registration-and-login-example-tutorial
+
+Envoi SMS
+- https://github.com/typpo/textbelt
+- https://scotch.io/tutorials/send-sms-from-the-browser-with-web-apis-node-and-nexmo
+
+
+
+
 
 ## Epics
 
@@ -662,6 +740,8 @@ stop
 }
 
 ```
+
+
 ---
 # Projet bibliothèque
 
