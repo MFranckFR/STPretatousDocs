@@ -22,7 +22,10 @@ BDD : MongoDB
 - [Les schémas : modèles, navigation, diagramme d'état](https://hackmd.io/pBscB-ART1OPuhgdrnWptg?view)
 - [Les Stories](https://hackmd.io/Hco8h-fyT-GsMnnzd2D2sw?view)
 - [Spécifications partielles](https://hackmd.io/7TjO7jEIRFCHFKvluZdQIw?view)
+
 - [Lien vers le Trello](https://trello.com/b/Fw6c5l6Y/pr%C3%AAtatous)
+
+- [Maquettes du projet en Wireframes (balsamiq) : lien github](https://github.com/MFranckFR/STPretatousDocs/blob/master/wireframe/Pretatous.bmpr)
 
 - [Annexes](https://hackmd.io/ct5EnR79RbCqxN-Aa0C9dw?view)
 
