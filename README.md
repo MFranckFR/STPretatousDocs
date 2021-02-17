@@ -10,6 +10,12 @@ On retrouve le principe de la « bibliothèque » avec la possibilité de rés
 
 L’équipe est constituée de Franck et Jean-Baptiste
 
+## Choix des Technos
+
+BackEnd : node Express
+FrondEnd: Angular / Javascript / Bootstrap / Material UI
+BDD : MongoDB
+
 ## Lien du Trello avec les user Stories
 
 https://trello.com/b/Fw6c5l6Y/pr%C3%AAtatous
